@@ -1,0 +1,21 @@
+  call plug#begin('~/.vim/plugged')
+  Plug 'mbbill/undotree'
+  Plug 'ycm-core/YouCompleteMe'
+  Plug 'morhetz/gruvbox'
+  Plug 'vim-utils/vim-man'
+  Plug 'lyuts/vim-rtags' 
+  call plug#end()
+
+  set number
+  set relativenumber
+  colorscheme gruvbox
+  set background=dark
+  set smartindent
+  set tabstop=4
+  set shiftwidth=4
+  set expandtab
+  set smartcase
+  set undodir=~/.vim/undodir
+  inoremap {<cr> {<cr>}<c-o><s-o>
+  inoremap [<cr> [<cr>]<c-o><s-o>
+  inoremap (<cr> (<cr>)<c-o><s-o>
