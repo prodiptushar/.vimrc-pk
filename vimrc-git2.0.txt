@@ -1,0 +1,36 @@
+  call plug#begin('~/.vim/plugged')
+  Plug 'mbbill/undotree'
+  Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'scrooloose/nerdtree'
+  Plug 'fannheyward/coc-pyright'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'ervandew/supertab'
+  Plug 'vim-utils/vim-man'
+  Plug 'tpope/vim-fugitive'
+  Plug 'lyuts/vim-rtags' 
+  call plug#end()
+
+  set number
+  set relativenumber
+  set smartindent
+  set tabstop=4
+  set shiftwidth=4
+  set expandtab
+  set smartcase 
+  set undodir=~/.vim/undodir
+  inoremap {<cr> {<cr>}<c-o><s-o>
+  inoremap [<cr> [<cr>]<c-o><s-o>
+  inoremap (<cr> (<cr>)<c-o><s-o>
+
+"Solarized colour sceme edited"
+   syntax enable
+   set background=dark
+   let g:solarized_termcolors=256
+   colorscheme solarized
+   highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+
+"kite detection problem
+   set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+   set laststatus=2  " always display the status line
