@@ -3,10 +3,10 @@
   Plug 'https://github.com/junegunn/vim-github-dashboard.git'
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'altercation/vim-colors-solarized'
-  "Plug 'https://github.com/adelarsq/neoline.vim'
-  Plug 'itchyny/lightline.vim'
+ "Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'scrooloose/nerdtree'
+  Plug 'vim-airline/vim-airline'
   Plug 'fannheyward/coc-pyright'
   Plug 'jremmen/vim-ripgrep'
   Plug 'ervandew/supertab'
@@ -53,3 +53,10 @@
  let &t_ZH="\e[3m"
  let &t_ZR="\e[23m"
  endif
+
+
+ "adding top bar
+ let g:airline#extensions#tabline#enabled = 1
+ let g:airline#extensions#tabline#left_sep = ' '
+ let g:airline#extensions#tabline#left_alt_sep = '|'
+ let g:airline#extensions#tabline#formatter = 'default'
