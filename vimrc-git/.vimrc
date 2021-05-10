@@ -1,0 +1,93 @@
+  call plug#begin('~/.vim/plugged')
+  Plug 'mbbill/undotree'
+  Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+  Plug 'morhetz/gruvbox'
+  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+  Plug 'altercation/vim-colors-solarized'
+ "Plug 'itchyny/lightline.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'scrooloose/nerdtree'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'vim-airline/vim-airline'
+  Plug 'https://github.com/tpope/vim-surround.git'
+  Plug 'fannheyward/coc-pyright'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'https://github.com/sickill/vim-monokai.git'
+  Plug 'vim-utils/vim-man'
+  Plug 'tpope/vim-fugitive'
+  Plug 'lyuts/vim-rtags' 
+  call plug#end()
+
+  set number
+  set relativenumber
+  set smartindent
+  set tabstop=4
+  set shiftwidth=4
+  set expandtab
+  set background=dark
+  set smartcase 
+  set ruler     " Show the cursor position all the time
+  set mouse=a
+  set undodir=~/.vim/undodir
+  inoremap {<cr> {<cr>}<c-o><s-o>}
+  inoremap [<cr> [<cr>]<c-o><s-o>]
+  inoremap (<cr> (<cr>)<c-o><s-o>)
+
+"material colour sceme edited"
+   syntax enable
+   if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+   endif
+   if (has('termguicolors'))
+     set termguicolors
+   endif
+  " let g:material_terminal_italics = 1
+  " let g:material_theme_style = 'darker'
+  " let g:lightline = { 'colorscheme': 'material_vim' }
+
+   syntax enable 
+   colorscheme gruvbox
+
+
+"kite detection problem
+   set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+   set laststatus=2  " always display the status line
+
+"key mapping synk  and additional settings from nvim config
+   source $HOME/.config/nvim/keys/mappings.vim
+   source $HOME/.config/nvim/plug-config/coc.vim
+   
+
+
+" Fix italics in Vim
+ if !has('nvim')
+ let &t_ZH="\e[3m"
+ let &t_ZR="\e[23m"
+ endif
+
+
+ "adding top bar
+ let g:airline#extensions#tabline#enabled = 1
+ let g:airline#extensions#tabline#left_sep = ' '
+ let g:airline#extensions#tabline#left_alt_sep = '|'
+ let g:airline#extensions#tabline#formatter = 'default'
+ let $FZF_DEFAULT_COMMAND = 'rg --hidden --ignore .git -l -g ""'
+
+
+ "font bolder
+  if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Bold:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
+  set guifont=Monospace\ Bold\ 16
+  "python venv error solved 
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif 
