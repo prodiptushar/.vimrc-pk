@@ -5,8 +5,6 @@
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'altercation/vim-colors-solarized'
  "Plug 'itchyny/lightline.vim'
-  Plug 'junegunn/fzf.vim'
-  Plug 'airblade/vim-rooter'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'scrooloose/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -58,10 +56,9 @@
 "key mapping synk  and additional settings from nvim config
    source $HOME/.config/nvim/keys/mappings.vim
    source $HOME/.config/nvim/plug-config/coc.vim
-   source $HOME/.config/nvim/plug-config/fzf.vim
+   
 
 
-  
 " Fix italics in Vim
  if !has('nvim')
  let &t_ZH="\e[3m"
@@ -94,6 +91,3 @@ if exists("$VIRTUAL_ENV")
 else
     let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
 endif 
-           
-
-nmap <Leader>n :NERDTree<CR>
